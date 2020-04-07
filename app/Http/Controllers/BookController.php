@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Book;
+use Illuminate\Http\Request;
 use App\Http\Requests\RequestBook;
 
 
@@ -31,12 +32,14 @@ class BookController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index(RequestBook $request)
+    public function index(Request $request)
     {
         $books = Book::orderBy('id','DESC')->paginate(5);
-        return view('books.index',compact('books'));
+        return view('books.index',compact('books'))
+            ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
     /**
