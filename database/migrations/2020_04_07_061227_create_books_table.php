@@ -16,6 +16,7 @@ class CreateBooksTable extends Migration
             $table->increments('id');
             $table->string('title')->nullable();
             $table->string('content')->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
     }

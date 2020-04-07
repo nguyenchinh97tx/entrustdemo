@@ -9,7 +9,7 @@
 	        </div>
 	        <div class="pull-right">
 	        	@permission('book-create')
-	            <a class="btn btn-success" href="{{ route('books.create') }}"> Thêm mới</a>
+	            <a class="btn btn-success" href="{{ route('books.create') }}"> Create New book</a>
 	            @endpermission
 	        </div>
 	    </div>
@@ -32,18 +32,16 @@
 	<tr>
 		<td>{{ ++$i }}</td>
 		<td>{{ $book->title }}</td>
-		<td>{{ $book->content }}</td>
+		<td>{{ $book->description }}</td>
 		<td>
-			@permission('book-show')
-			<a class="btn btn-info" href="{{ route('books.show',$book->id) }}">Xem</a>
-			@endpermission
+			<a class="btn btn-info" href="{{ route('books.show',$book->id) }}">Show</a>
 			@permission('book-edit')
-			<a class="btn btn-primary" href="{{ route('books.edit',$book->id) }}">Sửa</a>
+			<a class="btn btn-primary" href="{{ route('books.edit',$book->id) }}">Edit</a>
 			@endpermission
 
 			@permission('book-delete')
 			{!! Form::open(['method' => 'DELETE','route' => ['books.destroy', $book->id],'style'=>'display:inline']) !!}
-            {!! Form::submit('Xóa', ['class' => 'btn btn-danger']) !!}
+            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
         	{!! Form::close() !!}
         	@endpermission
 		</td>

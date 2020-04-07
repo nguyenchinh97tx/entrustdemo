@@ -5,10 +5,10 @@
 	<div class="row">
 	    <div class="col-lg-12 margin-tb">
 	        <div class="pull-left">
-	            <h2> Xem book</h2>
+	            <h2> Show Item</h2>
 	        </div>
 	        <div class="pull-right">
-	            <a class="btn btn-primary" href="{{ route('books.index') }}"> Quay lại</a>
+	            <a class="btn btn-primary" href="{{ route('itemCRUD2.index') }}"> Back</a>
 	        </div>
 	    </div>
 	</div>
@@ -17,15 +17,15 @@
 
 		<div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Tiêu đề:</strong>
-                {{ $book->title }}
+                <strong>Title:</strong>
+                {{ $item->title }}
             </div>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Nội dung:</strong>
-                {{ $book->content }}
+                <strong>Description:</strong>
+                {{ $item->description }}
             </div>
         </div>
 

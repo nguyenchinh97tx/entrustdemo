@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\RequestRole;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Role;
@@ -60,8 +59,11 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RequestRole $request)
+    public function store(Request $request)
     {
+        $this->validate($request, [
+
+        ]);
 
         $role = new Role();
         $role->name = $request->input('name');
@@ -116,8 +118,13 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(RequestRole $request, $id)
+    public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'display_name' => 'required',
+            'description' => 'required',
+            'permission' => 'required',
+        ]);
 
         $role = Role::find($id);
         $role->display_name = $request->input('display_name');
