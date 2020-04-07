@@ -5,18 +5,17 @@
 	<div class="row">
 	    <div class="col-lg-12 margin-tb">
 	        <div class="pull-left">
-	            <h2>Create New User</h2>
+	            <h2>Sửa Role</h2>
 	        </div>
 	        <div class="pull-right">
-	            <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
+	            <a class="btn btn-primary" href="{{ route('roles.index') }}"> Quay lại</a>
 	        </div>
 	    </div>
 	</div>
 
 	@if (count($errors) > 0)
 		<div class="alert alert-danger">
-			<strong>Có Lỗi : </strong>
-			<br>
+			<strong>Có Lỗi:</strong><br>
 			<ul>
 				@foreach ($errors->all() as $error)
 					<li>{{ $error }}</li>
@@ -25,7 +24,7 @@
 		</div>
 	@endif
 
-	{!! Form::open(array('route' => 'users.store','method'=>'POST')) !!}
+	{!! Form::model($role, ['method' => 'PATCH','route' => ['roles.update', $role->id]]) !!}
 	<div class="row">
 
 		<div class="col-xs-12 col-sm-12 col-md-12">
@@ -34,27 +33,29 @@
                 {!! Form::text('name', null, array('placeholder' => 'Tên','class' => 'form-control')) !!}
             </div>
         </div>
+		<div class="col-xs-12 col-sm-12 col-md-12">
+			<div class="form-group">
+				<strong>Tên:</strong>
+				{!! Form::text('display_name', null, array('placeholder' => 'Hiển thị','class' => 'form-control')) !!}
+			</div>
+		</div>
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Email:</strong>
-                {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
+                <strong>Mô tả:</strong>
+                {!! Form::textarea('description', null, array('placeholder' => 'Mô tả','class' => 'form-control','style'=>'height:100px')) !!}
             </div>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Mật Khẩu:</strong>
-                {!! Form::password('password', array('placeholder' => 'Mật khẩu','class' => 'form-control')) !!}
-            </div>
-        </div>
-
-
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Vai Trò:</strong>
-                {!! Form::select('roles[]', $roles,[], array('class' => 'form-control','multiple')) !!}
+                <strong>Quyền:</strong>
+                <br/>
+                @foreach($permission as $value)
+                	<label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
+                	{{ $value->display_name }}</label>
+                	<br/>
+                @endforeach
             </div>
         </div>
 
@@ -64,5 +65,6 @@
 
 	</div>
 	{!! Form::close() !!}
+
 
 @endsection

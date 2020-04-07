@@ -48,9 +48,16 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Home</a></li>
+                    @permission('user-list')
                     <li><a href="{{ route('users.index') }}">Users</a></li>
-                    <li><a href="#">Roles</a></li>
-                    <li><a href="#">Book</a></li>
+                    @endpermission
+                    @permission('role-list')
+                    <li><a href="{{ route('roles.index') }}">Roles</a></li>
+                    @endpermission
+                    @permission('book-list')
+                    <li><a href="{{ route('books.index') }}">Books</a></li>
+                    @endpermission
+
                 </ul>
 
                 <!-- Right Side Of Navbar -->

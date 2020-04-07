@@ -2,15 +2,36 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RequestUser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Role;
-use DB;
-use Hash;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:user-list', ['only' => [
+            'index',
+        ]]);
+        $this->middleware('permission:user-show', ['only' => [
+            'show',
+        ]]);
+
+        $this->middleware('permission:user-create', ['only' => [
+            'create',
+        ]]);
+        $this->middleware('permission:user-edit', ['only' => [
+            'edit',
+        ]]);
+        $this->middleware('permission:user-delete', ['only' => [
+            'destroy',
+        ]]);
+    }
 
     /**
      * Display a listing of the resource.
@@ -41,13 +62,11 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RequestUser $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|same:confirm-password',
-            'roles' => 'required'
+            'password' => 'required',
+            'email' => 'required'
         ]);
 
         $input = $request->all();
@@ -96,15 +115,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RequestUser $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email,'.$id,
-            'password' => 'same:confirm-password',
-            'roles' => 'required'
+            'email' => 'unique:users,email,'.$id,
         ]);
-
         $input = $request->all();
         if(!empty($input['password'])){ 
             $input['password'] = Hash::make($input['password']);

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class RequestUser extends Request
+class RequestRole extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,16 +25,18 @@ class RequestUser extends Request
     {
         return [
             'name' => 'required',
-            'email' => 'email',
-            'password' => '',
-            'roles' => 'required'
+            'display_name' => 'required',
+            'description' => 'required',
+            'permission' => 'required',
         ];
     }
     public function messages()
     {
         return [
             'name' => 'Không được để trống',
-            'roles' => 'Không được để trống',
+            'display_name' => 'Không được để trống',
+            'description' => 'Không được để trống',
+            'permission' => 'Không được để trống',
         ];
     }
 }
