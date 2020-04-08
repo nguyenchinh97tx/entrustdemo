@@ -121,7 +121,7 @@ return [
     |
     */
 
-    'providers' => [
+    'providers' => array(
 
         /*
          * Laravel Framework Service Providers...
@@ -150,6 +150,7 @@ return [
         Zizaco\Entrust\EntrustServiceProvider::class,
 
 
+
         /*
          * Application Service Providers...
          */
@@ -159,9 +160,10 @@ return [
         App\Providers\RouteServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Core\Providers\CoreServiceProvider::class,
 
 
-    ],
+    ),
 
     /*
     |--------------------------------------------------------------------------
