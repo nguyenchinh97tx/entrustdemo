@@ -30,7 +30,7 @@
 		</tr>
 	@foreach ($books as $key => $book)
 	<tr>
-		<td>{{ ++$i }}</td>
+		<td>{{ $book->id }}</td>
 		<td>{{ $book->title }}</td>
 		<td>{{ $book->content }}</td>
 		<td>

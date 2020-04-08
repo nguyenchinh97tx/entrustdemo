@@ -37,7 +37,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Nội dung:</strong>
-                {!! Form::textarea('description', null, array('placeholder' => 'Nội dung','class' => 'form-control','style'=>'height:100px')) !!}
+                {!! Form::textarea('content', null, array('placeholder' => 'Nội dung','class' => 'form-control','style'=>'height:100px')) !!}
             </div>
         </div>
 

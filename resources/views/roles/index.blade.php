@@ -31,7 +31,7 @@
 		</tr>
 	@foreach ($roles as $key => $role)
 	<tr>
-		<td>{{ ++$i }}</td>
+		<td>{{ $role->id }}</td>
 		<td>{{ $role->name }}</td>
 		<td>{{ $role->display_name }}</td>
 		<td>{{ $role->description }}</td>

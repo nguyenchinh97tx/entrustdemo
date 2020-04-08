@@ -1,8 +1,8 @@
 <?php
 
-namespace Core\Services;
+namespace Core\Repositories;
 
-interface BookServiceContract
+interface RoleRepositoryContract
 {
     public function paginate();
     public function find($id);
@@ -10,4 +10,6 @@ interface BookServiceContract
     public function update($id, $data);
     public function destroy($id);
     public function show($id);
+    public function showPermission($id);
+
 }

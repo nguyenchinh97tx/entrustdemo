@@ -3,6 +3,7 @@
 namespace Core\Repositories;
 
 use App\Book;
+use Illuminate\Support\Facades\DB;
 
 class BookRepository implements BookRepositoryContract
 {
@@ -15,7 +16,9 @@ class BookRepository implements BookRepositoryContract
 
     public function paginate()
     {
-        return $this->model->paginate(10);
+        return DB::table('books')
+            ->orderBy('id','ASC')
+            ->paginate(10);
     }
 
     public function find($id)
@@ -39,5 +42,6 @@ class BookRepository implements BookRepositoryContract
         $model = $this->find($id);
         return $model->destroy($id);
     }
+
 
 }

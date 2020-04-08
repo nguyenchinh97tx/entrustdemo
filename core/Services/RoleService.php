@@ -2,13 +2,14 @@
 
 namespace Core\Services;
 
-use Core\Repositories\BookRepositoryContract;
+use App\Role;
+use Core\Repositories\RoleRepositoryContract;
 
-class BookService implements BookServiceContract
+class RoleService implements RoleServiceContract
 {
     protected $repository;
 
-    public function __construct(BookRepositoryContract $repository)
+    public function __construct(RoleRepositoryContract $repository)
     {
         return $this->repository = $repository;
     }
@@ -26,6 +27,7 @@ class BookService implements BookServiceContract
 
     public function store($data)
     {
+
         return $this->repository->store($data);
     }
 
@@ -40,6 +42,11 @@ class BookService implements BookServiceContract
     }
     public function show($id)
     {
-        return $this->repository->show($id);
+       return $this->repository->show($id);
     }
+    public function showPermission($id)
+    {
+        return $this->repository->showPermission($id);
+    }
+
 }
