@@ -13,5 +13,6 @@ interface RoleRepositoryContract
     public function showRole($id);
     public function editRole($id);
     public function updateRole($id,$request);
+    public function getPermission();
 
 }

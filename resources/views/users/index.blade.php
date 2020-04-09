@@ -28,15 +28,15 @@
 			<th>Vai Trò</th>
 			<th width="280px"></th>
 		</tr>
-	@foreach ($data as $key => $user)
+	@foreach ($users as $key => $user)
 	<tr>
-		<td>{{ ++$i }}</td>
+		<td>{{ $user->id }}</td>
 		<td>{{ $user->name }}</td>
 		<td>{{ $user->email }}</td>
 		<td>
 			@if(!empty($user->roles))
-				@foreach($user->roles as $role)
-					<label class="label label-success">{{ $role->display_name }}</label>
+				@foreach($user->roles as $value)
+					<label class="label label-success">{{ $value->display_name }}</label>
 				@endforeach
 			@endif
 		</td>
@@ -51,7 +51,7 @@
 	@endforeach
 	</table>
 
-	{!! $data->render() !!}
+	{!! $users->render() !!}
 
 
 @endsection

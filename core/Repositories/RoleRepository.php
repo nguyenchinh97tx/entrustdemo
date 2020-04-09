@@ -102,5 +102,9 @@ class RoleRepository implements RoleRepositoryContract
         }
 
     }
+    public function getPermission()
+    {
+       return DB::table('permissions')->get();
+    }
 
 }

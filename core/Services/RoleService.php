@@ -56,5 +56,9 @@ class RoleService implements RoleServiceContract
     {
         return $this->repository->updateRole($id,$request);
     }
+    public function getPermission()
+    {
+        return $this->repository->getPermission();
+    }
 
 }

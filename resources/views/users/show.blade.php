@@ -33,8 +33,8 @@
             <div class="form-group">
                 <strong>Vai Trò:</strong>
                 @if(!empty($user->roles))
-					@foreach($user->roles as $v)
-						<label class="label label-success">{{ $v->display_name }}</label>
+					@foreach($user->roles as $value)
+						<label class="label label-success">{{ $value->display_name }}</label>
 					@endforeach
 				@endif
             </div>

@@ -38,7 +38,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::patch('roles/{id}',['as'=>'roles.update','uses'=>'RoleController@update','middleware' => ['permission:role-edit']]);
     Route::delete('roles/{id}',['as'=>'roles.destroy','uses'=>'RoleController@destroy','middleware' => ['permission:role-delete']]);
 
-    // For Item
+
     Route::get('books',['as'=>'books.index','uses'=>'BookController@index','middleware' => ['permission:book-list']]);
     Route::get('books/create',['as'=>'books.create','uses'=>'BookController@create','middleware' => ['permission:book-create']]);
     Route::post('books/create',['as'=>'books.store','uses'=>'BookController@store','middleware' => ['permission:book-create']]);
