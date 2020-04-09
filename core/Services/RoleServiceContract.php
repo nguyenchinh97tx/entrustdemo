@@ -10,5 +10,7 @@ interface RoleServiceContract
     public function update($id, $data);
     public function destroy($id);
     public function show($id);
-    public function showPermission($id);
+    public function showRole($id);
+    public function editRole($id);
+    public function updateRole($id,$request);
 }

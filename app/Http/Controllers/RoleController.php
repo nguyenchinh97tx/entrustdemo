@@ -2,16 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\RequestBook;
 use App\Http\Requests\RequestRole;
 use App\Http\Requests\UpdateRoleRequest;
-use Core\Services\BookServiceContract;
 use Core\Services\RoleServiceContract;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Role;
 use App\Permission;
-use Illuminate\Support\Facades\DB;
 
 class RoleController extends Controller
 {
@@ -47,43 +42,21 @@ class RoleController extends Controller
 
     public function show($id)
     {
-        $role=$this->service->find($id);
-        $rolePermissions = $this->service->showPermission($id);
-        $data = [
-            'role'=>$role,
-            'rolePermissions'=>$rolePermissions
-        ];
-
+        $data = $this->service->showRole($id);
         return view('roles.show',$data);
     }
 
 
     public function edit($id)
     {
-        $role = $this->service->find($id);
-        $permission = Permission::get();
-        $rolePermissions = DB::table("permission_role")->where("permission_role.role_id",$id)
-            ->lists('permission_role.permission_id','permission_role.permission_id');
+        $data = $this->service->editRole($id);
 
-        return view('roles.edit',compact('role','permission','rolePermissions'));
+        return view('roles.edit',$data);
     }
-
 
     public function update(UpdateRoleRequest $request, $id)
     {
-
-        $role = Role::find($id);
-        $role->display_name = $request->input('display_name');
-        $role->description = $request->input('description');
-        $role->save();
-
-        DB::table("permission_role")->where("permission_role.role_id",$id)
-            ->delete();
-
-        foreach ($request->input('permission') as $key => $value) {
-            $role->attachPermission($value);
-        }
-
+        $this->service->updateRole($id,$request);
         return redirect()->route('roles.index')
             ->with('success','Cập nhật thành công');
     }

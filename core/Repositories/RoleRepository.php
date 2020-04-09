@@ -60,12 +60,47 @@ class RoleRepository implements RoleRepositoryContract
         $role = $this->find($id);
         return $role;
     }
-    public function showPermission($id)
+    public function showRole($id)
     {
+        $role=$this->find($id);
         $rolePermissions = Permission::join("permission_role","permission_role.permission_id","=","permissions.id")
             ->where("permission_role.role_id",$id)
             ->get();
-        return $rolePermissions;
+        $data = [
+            'role'=>$role,
+            'rolePermissions' => $rolePermissions
+        ];
+        return $data;
+    }
+    public function editRole($id)
+    {
+        $role = $this->find($id);
+        $permission = DB::table('permissions')->get();
+        $rolePermissions = DB::table("permission_role")->where("permission_role.role_id",$id)
+            ->lists('permission_role.permission_id','permission_role.permission_id');
+        $data = [
+            'role'=>$role,
+            'permission'=>$permission,
+            'rolePermissions'=>$rolePermissions
+        ];
+        return $data;
+
+    }
+    public function updateRole($id,$request)
+    {
+        $role = $this->find($id);
+        $role->display_name = $request->input('name');
+        $role->display_name = $request->input('display_name');
+        $role->description = $request->input('description');
+        $role->save();
+
+        DB::table("permission_role")->where("permission_role.role_id",$id)
+            ->delete();
+
+        foreach ($request->input('permission') as $key => $value) {
+            $role->attachPermission($value);
+        }
+
     }
 
 }
