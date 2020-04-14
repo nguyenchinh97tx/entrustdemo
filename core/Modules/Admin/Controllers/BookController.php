@@ -1,13 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Core\Modules\Admin\Controllers;
 
 use App\Http\Requests\RequestBook;
 use Core\Services\BookServiceContract;
 use Illuminate\Http\Request;
-use App\Book;
-use App\Http\Controllers\Controller;
-
 
 
 class BookController extends Controller

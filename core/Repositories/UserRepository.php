@@ -2,10 +2,7 @@
 
 namespace Core\Repositories;
 
-use App\Role;
 use App\User;
-use App\Permission;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -61,7 +58,6 @@ class UserRepository implements UserRepositoryContract
     public function destroy($id)
     {
         DB::table("users")->where('id',$id)->delete();
-
     }
 
     public function listRole()
@@ -80,8 +76,5 @@ class UserRepository implements UserRepositoryContract
             'userRole' => $userRole
         ];
         return $data;
-
     }
-
-
 }

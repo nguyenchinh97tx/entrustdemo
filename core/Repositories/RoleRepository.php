@@ -4,7 +4,6 @@ namespace Core\Repositories;
 
 use App\Role;
 use App\Permission;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class RoleRepository implements RoleRepositoryContract
@@ -39,8 +38,6 @@ class RoleRepository implements RoleRepositoryContract
         foreach ($data->input('permission') as $key => $value) {
             $role->attachPermission($value);
         }
-
-
     }
 
     public function update($id, $data)
@@ -55,11 +52,13 @@ class RoleRepository implements RoleRepositoryContract
         DB::table("roles")->where('id',$id)->delete();
 
     }
+
     public function show($id)
     {
         $role = $this->find($id);
         return $role;
     }
+
     public function showRole($id)
     {
         $role=$this->find($id);
@@ -72,6 +71,7 @@ class RoleRepository implements RoleRepositoryContract
         ];
         return $data;
     }
+
     public function editRole($id)
     {
         $role = $this->find($id);
@@ -86,6 +86,7 @@ class RoleRepository implements RoleRepositoryContract
         return $data;
 
     }
+
     public function updateRole($id,$request)
     {
         $role = $this->find($id);
@@ -102,6 +103,7 @@ class RoleRepository implements RoleRepositoryContract
         }
 
     }
+
     public function getPermission()
     {
        return DB::table('permissions')->get();

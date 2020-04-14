@@ -2,7 +2,6 @@
 
 namespace Core\Services;
 
-use App\User;
 use Core\Repositories\UserRepositoryContract;
 
 class UserService implements UserServiceContract

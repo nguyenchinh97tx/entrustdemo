@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Core\Modules\Admin\Controllers;
 
 use App\Http\Requests\RequestRole;
 use App\Http\Requests\UpdateRoleRequest;
 use Core\Services\RoleServiceContract;
 use Illuminate\Http\Request;
-use App\Permission;
 
 class RoleController extends Controller
 {

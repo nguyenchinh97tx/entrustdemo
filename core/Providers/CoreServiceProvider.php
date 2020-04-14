@@ -13,8 +13,11 @@ use Core\Services\RoleService;
 use Core\Services\RoleServiceContract;
 use Core\Services\UserService;
 use Core\Services\UserServiceContract;
-use Illuminate\Support\ServiceProvider;
 use Core\Repositories\BookRepositoryContract;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\ServiceProvider;
+use File;
 
 class CoreServiceProvider extends ServiceProvider
 {
@@ -25,7 +28,26 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //Schema::defaultStringLength(191);
+
+        // FORCE SSL
+        if(config('app.env') != 'local') {
+            URL::forceScheme('https');
+        }
+
+        // CORE
+        $modulesDIR = dirname(__DIR__) . '/Modules';
+        $modules = array_map('basename', File::directories($modulesDIR));
+        foreach ($modules as $module) {
+            // MODULES ROUTES
+            if (file_exists($modulesDIR  . '/' . $module . '/routes.php')) {
+                include $modulesDIR . '/' . $module . '/routes.php';
+            }
+
+            if (is_dir($modulesDIR . '/' . $module . '/Views')) {
+                $this->loadViewsFrom($modulesDIR . '/' . $module . '/Views', $module);
+            }
+        }
     }
 
     /**
@@ -35,11 +57,8 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(BookRepositoryContract::class, BookRepository::class);
-        $this->app->bind(BookServiceContract::class, BookService::class);
-        $this->app->bind(RoleRepositoryContract::class, RoleRepository::class);
-        $this->app->bind(RoleServiceContract::class, RoleService::class);
-        $this->app->bind(UserRepositoryContract::class, UserRepository::class);
-        $this->app->bind(UserServiceContract::class, UserService::class);
+        $this->app->register(\Barryvdh\Debugbar\ServiceProvider::class);
+        $this->app->register(CommonServiceProvider::class);
+
     }
 }

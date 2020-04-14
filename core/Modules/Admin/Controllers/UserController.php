@@ -1,14 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Core\Modules\Admin\Controllers;
 
 use App\Http\Requests\RequestUser;
 use Core\Services\UserServiceContract;
 use Illuminate\Http\Request;
-use App\User;
-use App\Role;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
 
 class UserController extends Controller
