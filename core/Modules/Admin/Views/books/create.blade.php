@@ -5,7 +5,7 @@
 	<div class="row">
 	    <div class="col-lg-12 margin-tb">
 	        <div class="pull-left">
-	            <h2>Create New book</h2>
+	            <h2>Thêm Book</h2>
 	        </div>
 	        <div class="pull-right">
 	            <a class="btn btn-primary" href="{{ route('books.index') }}"> Back</a>
@@ -15,7 +15,7 @@
 
 	@if (count($errors) > 0)
 		<div class="alert alert-danger">
-			<strong>Whoops!</strong> There were some problems with your input.<br><br>
+			<strong>Có lỗi: </strong><br>
 			<ul>
 				@foreach ($errors->all() as $error)
 					<li>{{ $error }}</li>
@@ -31,6 +31,7 @@
             <div class="form-group">
                 <strong>Tiêu đề:</strong>
                 {!! Form::text('title', null, array('placeholder' => 'Tiêu đề','class' => 'form-control')) !!}
+
             </div>
         </div>
 
@@ -43,7 +44,7 @@
 
 		<div class="col-xs-12 col-sm-12 col-md-12">
 			<div class="form-group">
-				<strong>Ảnh:</strong>
+				<strong>Ảnh bìa:</strong>
 				{!! Form::file('image', null, array('class' => 'form-control')) !!}
 
 			</div>

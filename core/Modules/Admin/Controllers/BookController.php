@@ -2,7 +2,8 @@
 
 namespace Core\Modules\Admin\Controllers;
 
-use App\Http\Requests\RequestBook;
+
+use Core\Modules\Admin\Requests\RequestBook;
 use Core\Services\BookServiceContract;
 use Illuminate\Http\Request;
 
@@ -54,11 +55,14 @@ class BookController extends Controller
 
     public function update(RequestBook $request, $id)
     {
-
-        $this->service->update($id, $request->all());
-
+        $this->service->update($request,$id);
         return redirect()->route('books.index')
                         ->with('success','Cập nhật thành công');
+    }
+
+    public function download($id){
+        $name = $this->service->download($id);
+        return response()->download(storage_path("files/$name"));
     }
 
 

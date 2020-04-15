@@ -33,10 +33,10 @@ class RequestRole extends Request
     public function messages()
     {
         return [
-            'name' => 'Không được để trống',
-            'display_name' => 'Không được để trống',
-            'description' => 'Không được để trống',
-            'permission' => 'Không được để trống',
+            'name.required' => 'Không được để trống',
+            'display_name.required' => 'Không được để trống',
+            'description.required' => 'Không được để trống',
+            'permission.required' => 'Không được để trống',
         ];
     }
 }

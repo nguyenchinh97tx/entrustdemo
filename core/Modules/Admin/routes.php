@@ -34,7 +34,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::patch('users/{id}',['as'=>'users.update','uses'=>'UserController@update','middleware' => ['permission:user-edit']]);
     Route::delete('users/{id}',['as'=>'users.destroy','uses'=>'UserController@destroy','middleware' => ['permission:user-delete']]);
 
-
     Route::get('roles',['as'=>'roles.index','uses'=>'RoleController@index','middleware' => ['permission:role-list']]);
     Route::get('roles/create',['as'=>'roles.create','uses'=>'RoleController@create','middleware' => ['permission:role-create']]);
     Route::post('roles/create',['as'=>'roles.store','uses'=>'RoleController@store','middleware' => ['permission:role-create']]);
@@ -48,6 +47,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('books/create',['as'=>'books.create','uses'=>'BookController@create','middleware' => ['permission:book-create']]);
     Route::post('books/create',['as'=>'books.store','uses'=>'BookController@store','middleware' => ['permission:book-create']]);
     Route::get('books/{id}',['as'=>'books.show','uses'=>'BookController@show','middleware' => ['permission:book-show']]);
+    Route::get('books/download/{id}',['as'=>'books.download','uses'=>'BookController@download','middleware' => ['permission:book-show']]);
     Route::get('books/{id}/edit',['as'=>'books.edit','uses'=>'BookController@edit','middleware' => ['permission:book-edit']]);
     Route::patch('books/{id}',['as'=>'books.update','uses'=>'BookController@update','middleware' => ['permission:book-edit']]);
     Route::delete('books/{id}',['as'=>'books.destroy','uses'=>'BookController@destroy','middleware' => ['permission:book-delete']]);

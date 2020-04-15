@@ -24,13 +24,14 @@
 		</div>
 	@endif
 
-	{!! Form::model($book, ['method' => 'PATCH','route' => ['books.update', $book->id]]) !!}
+	{!! Form::model($book, ['method' => 'PATCH','route' => ['books.update', $book->id],'enctype'=>'multipart/form-data']) !!}
 	<div class="row">
 
 		<div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Tiêu đề:</strong>
                 {!! Form::text('title', null, array('placeholder' => 'Tiêu đề','class' => 'form-control')) !!}
+
             </div>
         </div>
 
@@ -40,14 +41,20 @@
                 {!! Form::textarea('content', null, array('placeholder' => 'Nội dung','class' => 'form-control','style'=>'height:100px')) !!}
             </div>
         </div>
-{{--		<div class="col-xs-12 col-sm-12 col-md-12">--}}
-{{--			<div class="form-group">--}}
-{{--				<strong>Ảnh:</strong>--}}
-{{--				--}}
-{{--				{!! Form::file('image', null, array('class' => 'form-control')) !!}--}}
+		<div class="col-xs-12 col-sm-12 col-md-12">
+			<div class="form-group">
+				<strong>Ảnh bìa:</strong>
 
-{{--			</div>--}}
-{{--		</div>--}}
+				{!! Form::file('image', null, array('class' => 'form-control')) !!}
+
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12">
+			<div class="form-group">
+				<strong>File đính kèm (.doc .pdf ...):</strong>
+				{!! Form::file('file', null, array('class' => 'form-control')) !!}
+			</div>
+		</div>
 
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
 				<button type="submit" class="btn btn-primary">Đồng ý</button>

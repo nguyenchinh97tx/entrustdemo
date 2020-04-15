@@ -26,7 +26,7 @@
 			<th>STT</th>
 			<th>Tiêu đề</th>
 			<th>Nội dung</th>
-			<th>Ảnh</th>
+			<th>Ảnh bìa</th>
 			<th width="280px"></th>
 		</tr>
 	@foreach ($books as $key => $book)
@@ -34,7 +34,7 @@
 		<td>{{ $book->id }}</td>
 		<td width="200px">{{ $book->title }}</td>
 		<td width="850px">{{ $book->content }}</td>
-		<td width="200px">
+		<td width="110px">
 			@if(!$book->image)
 				<img src="/images/no-image.jpg" alt="" class="image-book-index">
 		    @endif

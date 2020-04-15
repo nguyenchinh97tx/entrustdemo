@@ -20,10 +20,14 @@
 					@endif
 				</div>
 				<div>
-					<p class="">
-						{{ $book->content }}
-					</p>
+					<p>{{ $book->content }}</p>
 				</div>
+			@if($book->file)
+				<div>
+					<a class="btn btn-primary " href="{{ route('books.download',$book->id) }}"> Download File</a>
+				</div>
+			@endif
+
 			<div class="text-center btn-back">
 				<a class="btn btn-primary " href="{{ route('books.index') }}"> Quay lại</a>
 			</div>

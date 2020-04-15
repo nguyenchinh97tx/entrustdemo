@@ -29,9 +29,9 @@ class BookService implements BookServiceContract
         return $this->repository->store($data);
     }
 
-    public function update($id, $data)
+    public function update($request, $id)
     {
-        return $this->repository->update($id, $data);
+        return $this->repository->update($request, $id);
     }
 
     public function destroy($id)
@@ -41,5 +41,9 @@ class BookService implements BookServiceContract
     public function show($id)
     {
         return $this->repository->show($id);
+    }
+    public function download($id)
+    {
+        return $this->repository->download($id);
     }
 }

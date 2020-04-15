@@ -33,8 +33,8 @@ class RequestUser extends Request
     public function messages()
     {
         return [
-            'name' => 'Không được để trống',
-            'roles' => 'Không được để trống',
+            'name.required' => 'Không được để trống',
+            'roles.required' => 'Không được để trống',
         ];
     }
 }

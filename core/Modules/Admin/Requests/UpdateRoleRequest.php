@@ -24,9 +24,9 @@ class UpdateRoleRequest extends Request
     public function rules()
     {
         return [
-            'display_name' => 'required',
-            'description' => 'required',
-            'permission' => 'required',
+            'display_name.required' => 'required',
+            'description.required' => 'required',
+            'permission.required' => 'required',
         ];
     }
 }

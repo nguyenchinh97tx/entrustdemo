@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace Core\Modules\Admin\Requests;
 
 use App\Http\Requests\Request;
 
@@ -31,8 +31,8 @@ class RequestBook extends Request
     public function messages()
     {
         return [
-            'title' => 'Không được để trống',
-            'content' => 'Không được để trống',
+            'title.required' => 'Không được để trống',
+            'content.required' => 'Không được để trống',
         ];
     }
 }
