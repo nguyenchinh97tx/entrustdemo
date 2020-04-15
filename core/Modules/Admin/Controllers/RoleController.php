@@ -20,14 +20,14 @@ class RoleController extends Controller
     public function index(Request $request)
     {
         $roles = $this->service->paginate();
-        return view('roles.index',compact('roles'))
+        return view('Admin::roles.index',compact('roles'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
     public function create()
     {
         $permission = $this->service->getPermission();
-        return view('roles.create',compact('permission'));
+        return view('Admin::roles.create',compact('permission'));
     }
 
     public function store(RequestRole $request)
@@ -42,7 +42,7 @@ class RoleController extends Controller
     public function show($id)
     {
         $data = $this->service->showRole($id);
-        return view('roles.show',$data);
+        return view('Admin::roles.show',$data);
     }
 
 
@@ -50,7 +50,7 @@ class RoleController extends Controller
     {
         $data = $this->service->editRole($id);
 
-        return view('roles.edit',$data);
+        return view('Admin::roles.edit',$data);
     }
 
     public function update(UpdateRoleRequest $request, $id)

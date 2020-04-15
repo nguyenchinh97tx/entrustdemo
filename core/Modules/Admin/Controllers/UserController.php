@@ -18,14 +18,14 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $users = $this->service->paginate();
-        return view('users.index',compact('users'))
+        return view('Admin::users.index',compact('users'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
     public function create()
     {
         $roles = $this->service->listRole();
-        return view('users.create',compact('roles'));
+        return view('Admin::users.create',compact('roles'));
     }
 
     public function store(RequestUser $request)
@@ -38,13 +38,13 @@ class UserController extends Controller
     public function show($id)
     {
         $user = $this->service->find($id);
-        return view('users.show',compact('user'));
+        return view('Admin::users.show',compact('user'));
     }
 
     public function edit($id)
     {
         $data = $this->service->editUser($id);
-        return view('users.edit',$data);
+        return view('Admin::users.edit',$data);
     }
 
     public function update(RequestUser $request, $id)

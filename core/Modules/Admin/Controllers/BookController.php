@@ -19,20 +19,20 @@ class BookController extends Controller
     public function index(Request $request)
     {
         $books = $this->service->paginate();
-        return view('books.index',compact('books'))
+        return view('Admin::books.index',compact('books'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
 
     public function create()
     {
-        return view('books.create');
+        return view('Admin::books.create');
     }
 
     public function store(RequestBook $request)
     {
 
-        $this->service->store($request->all());
+        $this->service->store($request);
 
         return redirect()->route('books.index')
                         ->with('success','Thêm thành công');
@@ -41,14 +41,14 @@ class BookController extends Controller
     public function show($id)
     {
         $book = $this->service->find($id);
-        return view('books.show',compact('book'));
+        return view('Admin::books.show',compact('book'));
     }
 
 
     public function edit($id)
     {
         $book = $this->service->find($id);
-        return view('books.edit',compact('book'));
+        return view('Admin::books.edit',compact('book'));
     }
 
 

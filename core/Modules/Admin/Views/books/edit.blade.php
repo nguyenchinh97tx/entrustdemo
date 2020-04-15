@@ -40,6 +40,14 @@
                 {!! Form::textarea('content', null, array('placeholder' => 'Nội dung','class' => 'form-control','style'=>'height:100px')) !!}
             </div>
         </div>
+{{--		<div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--			<div class="form-group">--}}
+{{--				<strong>Ảnh:</strong>--}}
+{{--				--}}
+{{--				{!! Form::file('image', null, array('class' => 'form-control')) !!}--}}
+
+{{--			</div>--}}
+{{--		</div>--}}
 
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
 				<button type="submit" class="btn btn-primary">Đồng ý</button>

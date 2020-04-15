@@ -35,7 +35,7 @@
         </div>
 		<div class="col-xs-12 col-sm-12 col-md-12">
 			<div class="form-group">
-				<strong>Tên:</strong>
+				<strong>Hiển Thị:</strong>
 				{!! Form::text('display_name', null, array('placeholder' => 'Hiển thị','class' => 'form-control')) !!}
 			</div>
 		</div>

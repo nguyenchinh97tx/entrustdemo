@@ -26,14 +26,25 @@
 			<th>STT</th>
 			<th>Tiêu đề</th>
 			<th>Nội dung</th>
+			<th>Ảnh</th>
 			<th width="280px"></th>
 		</tr>
 	@foreach ($books as $key => $book)
 	<tr>
 		<td>{{ $book->id }}</td>
-		<td>{{ $book->title }}</td>
-		<td>{{ $book->content }}</td>
-		<td>
+		<td width="200px">{{ $book->title }}</td>
+		<td width="850px">{{ $book->content }}</td>
+		<td width="200px">
+			@if(!$book->image)
+				<img src="/images/no-image.jpg" alt="" class="image-book-index">
+		    @endif
+			@if($book->image)
+					<img src="/images/{{$book->image}}" alt="" class="image-book-index">
+			@endif
+
+
+		</td>
+		<td >
 			@permission('book-show')
 			<a class="btn btn-info" href="{{ route('books.show',$book->id) }}">Xem</a>
 			@endpermission

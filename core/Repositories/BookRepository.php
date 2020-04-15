@@ -28,7 +28,28 @@ class BookRepository implements BookRepositoryContract
 
     public function store($data)
     {
-        return $this->model->create($data);
+
+        $book = new Book();
+        $book->title = $data->input('title');
+        $book->content = $data->input('content');
+
+        if ($data->hasFile('image')) {
+            $image = $data->file('image');
+            $name = time().$image->getClientOriginalName();
+            $destinationPath = public_path('/images');
+            $image->move($destinationPath, $name);
+            $book->image = $name;
+            $book->save();
+        }
+        if ($data->hasFile('file')) {
+            $image = $data->file('file');
+            $name = time().$image->getClientOriginalName();
+            $destinationPath = public_path('/files');
+            $image->move($destinationPath, $name);
+            $book->file = $name;
+            $book->save();
+        }
+
     }
 
     public function update($id, $data)

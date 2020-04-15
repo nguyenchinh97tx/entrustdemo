@@ -1,0 +1,23 @@
+.image-book-index{
+    width: 200px;
+    height: 200px;
+}
+.show-image{
+    width: 600px;
+    height: 900px;
+    margin-bottom: 20px ;
+    margin-top: -10px ;
+}
+
+.show-page{
+    width: 600px;
+    margin-left: 280px ;
+}
+.color-date{
+    color: #ff416e;
+}
+.btn-back{
+    margin-bottom: 50px;
+    margin-top: 100px;
+
+}

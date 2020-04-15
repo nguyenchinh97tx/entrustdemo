@@ -2,32 +2,35 @@
  
 @section('content')
 
+
 	<div class="row">
-	    <div class="col-lg-12 margin-tb">
-	        <div class="pull-left">
-	            <h2> Show book</h2>
-	        </div>
-	        <div class="pull-right">
-	            <a class="btn btn-primary" href="{{ route('books.index') }}"> Back</a>
-	        </div>
-	    </div>
+		<div class="col-xs-12 col-sm-12 col-md-12 show-page ">
+			<div class="">
+				<h2 class="">{{ $book->title }}</h2>
+			</div>
+			<div class="color-date">
+				<p class="">{{ $book->created_at }}</p>
+			</div>
+                <div>
+					@if(!$book->image)
+						<img class="show-image" src="/images/no-image.jpg" alt="">
+					@endif
+					@if($book->image)
+						<img class="show-image" src="/images/{{$book->image}}" alt="" >
+					@endif
+				</div>
+				<div>
+					<p class="">
+						{{ $book->content }}
+					</p>
+				</div>
+			<div class="text-center btn-back">
+				<a class="btn btn-primary " href="{{ route('books.index') }}"> Quay lại</a>
+			</div>
+
+
+        </div>
 	</div>
-
-	<div class="row">
-
-		<div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Tiêu đề:</strong>
-                {{ $book->title }}
-            </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Nội dung:</strong>
-                {{ $book->content }}
-            </div>
-        </div>
 
 	</div>
 
