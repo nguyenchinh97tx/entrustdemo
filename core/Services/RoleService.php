@@ -19,7 +19,6 @@ class RoleService implements RoleServiceContract
         return $this->repository->paginate();
     }
 
-
     public function find($id)
     {
         return $this->repository->find($id);
@@ -60,5 +59,4 @@ class RoleService implements RoleServiceContract
     {
         return $this->repository->getPermission();
     }
-
 }

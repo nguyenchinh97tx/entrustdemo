@@ -2,8 +2,8 @@
 
 namespace Core\Modules\Admin\Controllers;
 
-use App\Http\Requests\RequestRole;
-use App\Http\Requests\UpdateRoleRequest;
+use Core\Modules\Admin\Requests\RequestRole;
+use Core\Modules\Admin\Requests\UpdateRoleRequest;
 use Core\Services\RoleServiceContract;
 use Illuminate\Http\Request;
 

@@ -101,7 +101,6 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-
         $("#in_img").change(function() {
             readURL(this);
         });

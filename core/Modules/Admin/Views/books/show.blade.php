@@ -1,8 +1,6 @@
 @extends('layouts.app')
  
 @section('content')
-
-
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 show-page ">
 			<div class="">
@@ -27,15 +25,10 @@
 					<a class="btn btn-primary " href="{{ route('books.download',$book->id) }}"> Download File</a>
 				</div>
 			@endif
-
 			<div class="text-center btn-back">
 				<a class="btn btn-primary " href="{{ route('books.index') }}"> Quay lại</a>
 			</div>
-
-
         </div>
 	</div>
-
 	</div>
-
 @endsection

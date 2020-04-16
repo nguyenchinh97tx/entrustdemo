@@ -2,8 +2,8 @@
 
 namespace Core\Repositories;
 
-use App\Role;
-use App\Permission;
+use Core\Modules\Admin\Models\Role;
+use Core\Modules\Admin\Models\Permission;
 use Illuminate\Support\Facades\DB;
 
 class RoleRepository implements RoleRepositoryContract
@@ -29,12 +29,8 @@ class RoleRepository implements RoleRepositoryContract
 
     public function store($data)
     {
-        $data->all();
-        $role = new Role();
-        $role->name = $data->input('name');
-        $role->display_name = $data->input('display_name');
-        $role->description = $data->input('description');
-        $role->save();
+        $this->model->create($data->all());
+        $role = Role::orderBy('id', 'DESC')->first();
         foreach ($data->input('permission') as $key => $value) {
             $role->attachPermission($value);
         }
@@ -76,7 +72,8 @@ class RoleRepository implements RoleRepositoryContract
     {
         $role = $this->find($id);
         $permission = DB::table('permissions')->get();
-        $rolePermissions = DB::table("permission_role")->where("permission_role.role_id",$id)
+        $rolePermissions = DB::table("permission_role")
+            ->where("permission_role.role_id",$id)
             ->lists('permission_role.permission_id','permission_role.permission_id');
         $data = [
             'role'=>$role,
@@ -89,24 +86,18 @@ class RoleRepository implements RoleRepositoryContract
 
     public function updateRole($id,$request)
     {
-        $role = $this->find($id);
-        $role->display_name = $request->input('name');
-        $role->display_name = $request->input('display_name');
-        $role->description = $request->input('description');
-        $role->save();
-
+        $model = $this->model;
+        $model->update($request->all());
         DB::table("permission_role")->where("permission_role.role_id",$id)
             ->delete();
-
+        $role = Role::orderBy('id', 'DESC')->first();
         foreach ($request->input('permission') as $key => $value) {
             $role->attachPermission($value);
         }
-
     }
 
     public function getPermission()
     {
        return DB::table('permissions')->get();
     }
-
 }

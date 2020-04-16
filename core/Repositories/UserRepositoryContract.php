@@ -11,6 +11,4 @@ interface UserRepositoryContract
     public function destroy($id);
     public function editUser($id);
     public function listRole();
-
-
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Core\Modules\Admin\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Zizaco\Entrust\Traits\EntrustUserTrait;

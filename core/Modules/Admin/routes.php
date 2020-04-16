@@ -51,6 +51,5 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('books/{id}/edit',['as'=>'books.edit','uses'=>'BookController@edit','middleware' => ['permission:book-edit']]);
     Route::patch('books/{id}',['as'=>'books.update','uses'=>'BookController@update','middleware' => ['permission:book-edit']]);
     Route::delete('books/{id}',['as'=>'books.destroy','uses'=>'BookController@destroy','middleware' => ['permission:book-delete']]);
-
 });
 });

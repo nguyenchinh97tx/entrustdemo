@@ -63,6 +63,4 @@
 	</table>
 
 	{!! $books->render() !!}
-
-
 @endsection

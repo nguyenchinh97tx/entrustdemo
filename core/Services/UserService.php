@@ -3,6 +3,7 @@
 namespace Core\Services;
 
 use Core\Repositories\UserRepositoryContract;
+use Illuminate\Support\Facades\Hash;
 
 class UserService implements UserServiceContract
 {
@@ -32,7 +33,8 @@ class UserService implements UserServiceContract
 
     public function update($id, $request)
     {
-        return $this->repository->update($id, $request);
+        $data=$this->checkPass($request);
+        return $this->repository->update($id, $data);
     }
 
     public function destroy($id)
@@ -53,5 +55,17 @@ class UserService implements UserServiceContract
     {
         return $this->repository->listRole();
     }
+    public function checkPass($request)
+    {
+        $input = $request;
+        if(!empty($input['password'])){
+            $input['password'] = Hash::make($input['password']);
+           return $input;
+        }
+        else{
+            $input = array_except($input,array('password'));
+            return $input;
+        }
 
+    }
 }

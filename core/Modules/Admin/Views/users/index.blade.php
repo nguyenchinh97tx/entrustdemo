@@ -52,6 +52,4 @@
 	</table>
 
 	{!! $users->render() !!}
-
-
 @endsection

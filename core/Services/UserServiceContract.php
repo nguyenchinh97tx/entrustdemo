@@ -12,4 +12,5 @@ interface UserServiceContract
     public function show($id);
     public function editUser($id);
     public function listRole();
+    public function checkPass($request);
 }

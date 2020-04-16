@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace Core\Modules\Admin\Requests;
 
 use App\Http\Requests\Request;
 
@@ -24,9 +24,16 @@ class UpdateRoleRequest extends Request
     public function rules()
     {
         return [
-            'display_name.required' => 'required',
-            'description.required' => 'required',
-            'permission.required' => 'required',
+            'display_name' => 'required',
+            'description' => 'required',
+            'permission' => 'required',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'display_name.required' => 'Không được để trống',
+            'description.required' => 'Không được để trống',
         ];
     }
 }

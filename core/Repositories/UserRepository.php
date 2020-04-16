@@ -39,17 +39,10 @@ class UserRepository implements UserRepositoryContract
 
     public function update($id, $request)
     {
-        $input = $request->all();
-        if(!empty($input['password'])){
-            $input['password'] = Hash::make($input['password']);
-        }else{
-            $input = array_except($input,array('password'));
-        }
-
-        $user = User::find($id);
-        $user->update($input);
+        $model = $this->find($id);
+        $model->update($request->all());
         DB::table('role_user')->where('user_id',$id)->delete();
-
+        $user = User::orderBy('id', 'DESC')->first();
         foreach ($request->input('roles') as $key => $value) {
             $user->attachRole($value);
         }

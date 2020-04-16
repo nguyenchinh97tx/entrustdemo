@@ -2,7 +2,8 @@
 
 namespace Core\Modules\Admin\Controllers;
 
-use App\Http\Requests\RequestUser;
+use Core\Modules\Admin\Requests\RequestBook;
+use Core\Modules\Admin\Requests\RequestUser;
 use Core\Services\UserServiceContract;
 use Illuminate\Http\Request;
 

@@ -45,14 +45,14 @@
 			<div class="form-group">
 				<strong>Ảnh bìa:</strong>
 
-				{!! Form::file('image', null, array('class' => 'form-control')) !!}
+				{!! Form::file('thumbnail', null, array('class' => 'form-control')) !!}
 
 			</div>
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-12">
 			<div class="form-group">
 				<strong>File đính kèm (.doc .pdf ...):</strong>
-				{!! Form::file('file', null, array('class' => 'form-control')) !!}
+				{!! Form::file('attachfile', null, array('class' => 'form-control')) !!}
 			</div>
 		</div>
 
@@ -62,6 +62,4 @@
 
 	</div>
 	{!! Form::close() !!}
-
-
 @endsection
